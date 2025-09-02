@@ -1,17 +1,18 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int main() {
-    int num1, num2, soma;
+int main()
+{
+    int numero, resto = 0, soma = 0;
 
-    printf("Digite o primeiro numero: ");
-    scanf("%d", &num1);
+    scanf ("%d", &numero);
 
-    printf("Digite o segundo numero: ");
-    scanf("%d", &num2);
+    while(numero > 0)
+    {
+      resto = numero % 10;
+      numero = numero / 10;
+      soma = soma + resto;
+    }
 
-    soma = num1 + num2;
-
-    printf("A soma de %d e %d eh: %d\n", num1, num2, soma);
-
-    return 0;
+    printf ("A soma eh %d", soma);
 }
