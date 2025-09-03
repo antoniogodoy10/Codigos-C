@@ -3,59 +3,17 @@
 
 int main()
 {
-    int cont, codigo, nht;
-    float sal_min, sal_inicial, aux, sal_final, valor;
-    char turno, categoria;
+    int vetor[10];
 
-    sal_min = 450;
+    vetor[0] = 0;
+    vetor[1] = 1;
 
-    for (cont = 0; cont < 10; cont++)
+    for(int i = 0; i < 10; i++)
     {
-        scanf("%d", &codigo);
-        scanf ("%d", &nht);
-        scanf (" %c", &turno);
-        scanf (" %c", &categoria);
-
-        if (categoria = 'G')
-        {
-            if (turno = 'N')
-            {
-                valor = sal_min * 18/100;
-            }
-            else
-            {
-                valor = sal_min * 15/100;
-            }
-        }
-        else
-        {
-            if (turno = 'N')
-            {
-                valor = sal_min * 13/100;
-            }
-            else
-            {
-                valor = sal_min * 10/100;
-            }
-        }
-        sal_inicial = nht * valor;
-
-        if (sal_inicial <= 300)
-        {
-            aux = sal_inicial * 20/100;
-        }
-        else if (sal_inicial > 600)
-        {
-            aux = sal_inicial * 5/100;
-        }
-        else
-        {
-            aux = sal_inicial * 5/100;
-        }
-
-        sal_final = sal_inicial + aux;
-
-        printf ("Codigo: %d \nNumero de horas trabalhadas: %d \nValor da hora: %.2f \nSalario inicial: R$%.2f \n"
-                "Auxilio alimentacao: R$%.2f \nSALARIO FINAL: R$%.2f ", codigo, nht, valor, sal_inicial, aux, sal_final);
+       vetor[i + 2] = vetor[i] + vetor[i + 1];
+    }
+    for (int i = 0; i < 10; i++)
+    {
+        printf ("%d ", vetor[i]);
     }
 }
