@@ -1,33 +1,61 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
-int soma_digitos(int n) {
-    if (n == 0) return 0;
-    return (n % 10) + soma_digitos(n / 10);
-}
+int main()
+{
+    int cont, codigo, nht;
+    float sal_min, sal_inicial, aux, sal_final, valor;
+    char turno, categoria;
 
-int main() {
-    char entrada[50];
-    int contador = 1;
+    sal_min = 450;
 
-    while (1) {
-        if (fgets(entrada, sizeof(entrada), stdin) == NULL) {
-            break;
+    for (cont = 0; cont < 10; cont++)
+    {
+        scanf("%d", &codigo);
+        scanf ("%d", &nht);
+        scanf (" %c", &turno);
+        scanf (" %c", &categoria);
+
+        if (categoria = 'G')
+        {
+            if (turno = 'N')
+            {
+                valor = sal_min * 18/100;
+            }
+            else
+            {
+                valor = sal_min * 15/100;
+            }
+        }
+        else
+        {
+            if (turno = 'N')
+            {
+                valor = sal_min * 13/100;
+            }
+            else
+            {
+                valor = sal_min * 10/100;
+            }
+        }
+        sal_inicial = nht * valor;
+
+        if (sal_inicial <= 300)
+        {
+            aux = sal_inicial * 20/100;
+        }
+        else if (sal_inicial > 600)
+        {
+            aux = sal_inicial * 5/100;
+        }
+        else
+        {
+            aux = sal_inicial * 5/100;
         }
 
-        entrada[strcspn(entrada, "\n")] = 0;
+        sal_final = sal_inicial + aux;
 
-        if (strcmp(entrada, "FIM") == 0) {
-            break;
-        }
-
-        int numero = atoi(entrada);
-
-        printf("%d\n%d\n\n", contador, soma_digitos(numero));
-
-        contador++;
+        printf ("Codigo: %d \nNumero de horas trabalhadas: %d \nValor da hora: %.2f \nSalario inicial: R$%.2f \n"
+                "Auxilio alimentacao: R$%.2f \nSALARIO FINAL: R$%.2f ", codigo, nht, valor, sal_inicial, aux, sal_final);
     }
-
-    return 0;
 }
