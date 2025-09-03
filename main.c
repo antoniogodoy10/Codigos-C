@@ -3,53 +3,47 @@
 
 int main()
 {
-    int mulher_sim = 0, mulher_nao = 0, homem_sim = 0, sim = 0, nao = 0;
-    char sexo, produto;
-    float porcentagem, homem_nao = 0, homem = 0;
+    int vetor1[10], vetor2[10], vetor3[20], troca;
 
-    printf ("Digite M ou H para mulher e homem, e S ou N para sim ou não perante a aceitação do produto\n");
+    printf ("Preencha o primeiro vetor:\n ");
 
     for (int i = 0; i < 10; i++)
     {
+        scanf ("%d", &vetor1[i]);
+    }
+    printf ("Preencha o segundo vetor: \n");
 
-        scanf (" %c", &sexo);
-        scanf (" %c", &produto);
-        if (produto == 'S')
-        {
-            sim++;
-
-            if (sexo == 'M')
-            {
-               mulher_sim++;
-            }
-            else
-            {
-                homem_sim++;
-                homem++;
-            }
-        }
-        else
-        {
-            nao++;
-
-            if (sexo == 'M')
-            {
-                mulher_nao++;
-            }
-            else
-            {
-                homem_nao++;
-                homem++;
-            }
-        }
-
+    for (int i = 0; i < 10; i++)
+    {
+        scanf ("%d", &vetor2[i]);
+    }
+    for (int i = 0; i < 10; i++)
+    {
+        vetor3[i] = vetor1[i];
+    }
+    for (int i = 0; i < 10; i++)
+    {
+        vetor3[i + 10] = vetor2[i];
     }
 
-        porcentagem = (homem_nao/homem) * 100;
+    for (int i = 0; i < 20 - 1; i++)
+    {
+        for (int j = i + 1; j < 19; j++)
+        {
+            if (vetor3[i] < vetor3[j])
+            {
+               troca = vetor3[i];
+               vetor3[i] = vetor3[j];
+               vetor3[j] = troca;
+            }
+        }
+    }
 
-        printf ("%d pessoas responderam sim\n", sim);
-        printf ("%d pessoas responderam nao\n", nao);
-        printf ("%d mulheres responderam sim\n", mulher_sim);
-        printf ("%.f por cento dos homens responderam nao\n", porcentagem);
+    printf ("Vetor 3: \n");
+
+    for (int i = 0; i < 20; i++)
+    {
+        printf ("%d ", vetor3[i]);
+    }
 
 }
