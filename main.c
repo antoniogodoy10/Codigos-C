@@ -1,49 +1,45 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-int main()
-{
-    int vetor1[10], vetor2[10], vetor3[20], troca;
+// Função que inverte uma string iterativamente
+void inverterString(char str[]) {
+    int i = 0, j = 0;
+    char temp;
 
-    printf ("Preencha o primeiro vetor:\n ");
-
-    for (int i = 0; i < 10; i++)
-    {
-        scanf ("%d", &vetor1[i]);
+    // Descobrir o tamanho "na unha"
+    while (str[j] != '\0') {
+        j++;
     }
-    printf ("Preencha o segundo vetor: \n");
+    j--; // agora j está na última posição válida da string
 
-    for (int i = 0; i < 10; i++)
-    {
-        scanf ("%d", &vetor2[i]);
+    // Troca os caracteres do início com os do fim
+    while (i < j) {
+        temp = str[i];
+        str[i] = str[j];
+        str[j] = temp;
+        i++;
+        j--;
     }
-    for (int i = 0; i < 10; i++)
-    {
-        vetor3[i] = vetor1[i];
-    }
-    for (int i = 0; i < 10; i++)
-    {
-        vetor3[i + 10] = vetor2[i];
-    }
+}
 
-    for (int i = 0; i < 20 - 1; i++)
-    {
-        for (int j = i + 1; j < 19; j++)
-        {
-            if (vetor3[i] < vetor3[j])
-            {
-               troca = vetor3[i];
-               vetor3[i] = vetor3[j];
-               vetor3[j] = troca;
+int main() {
+    char str[100];
+
+    // Lê várias linhas até EOF (Ctrl+D no Linux/Mac ou Ctrl+Z no Windows)
+    while (fgets(str, sizeof(str), stdin)) {
+        // Remover o '\n' manualmente
+        int k = 0;
+        while (str[k] != '\0') {
+            if (str[k] == '\n') {
+                str[k] = '\0';
+                break;
             }
+            k++;
         }
+
+        inverterString(str);
+
+        printf("%s\n", str);
     }
 
-    printf ("Vetor 3: \n");
-
-    for (int i = 0; i < 20; i++)
-    {
-        printf ("%d ", vetor3[i]);
-    }
-
+    return 0;
 }
