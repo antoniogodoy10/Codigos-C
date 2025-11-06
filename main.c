@@ -1,72 +1,43 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-int main()
-{
-    int r;
-    int repM = 0, repL = 0;
-    int somaMi = 0, somaLi = 0;
+int main() {
+    int N; // número de casos de teste
+    scanf("%d", &N);
 
-    while (1)
-    {
-        scanf ("%d", &r);
+    for (int caso = 0; caso < N; caso++) {
+        int M; // número de alunos
+        scanf("%d", &M);
 
-        if (r == 0)
-        {
-            break;
+        int notas[M];
+        int copia[M];
+
+        // leitura das notas e cópia
+        for (int i = 0; i < M; i++) {
+            scanf("%d", &notas[i]);
+            copia[i] = notas[i];
         }
 
-        int Mi[r], Li[r];
-
-        for (int i = 0; i < r; i++)
-        {
-            scanf ("%d", &Mi[i]);
-            somaMi += Mi[i];
-        }
-
-        for (int j = 0; j < r; j++)
-        {
-            scanf ("%d", &Li[j]);
-            somaLi += Li[j];
-        }
-
-
-        for (int k = 1; k < r; k++)
-        {
-            if (Mi[k] == Mi[k - 1])
-            {
-                repM++;
-            }
-            else{
-                repM = 0;
-            }
-
-            if (Li[k] == Li [k -1])
-            {
-                repL++;
-            }
-            else
-            {
-                repL = 0;
+        // ordenação decrescente (Bubble Sort)
+        for (int i = 0; i < M - 1; i++) {
+            for (int j = 0; j < M - 1 - i; j++) {
+                if (notas[j] < notas[j + 1]) {
+                    int aux = notas[j];
+                    notas[j] = notas[j + 1];
+                    notas[j + 1] = aux;
+                }
             }
         }
 
-       if (repM >= 3 && repL <= 3) somaMi += 30;
-       if (repL >= 3 && repM <= 3) somaLi += 30;
+        // contar quantos ficaram na mesma posição
+        int iguais = 0;
+        for (int i = 0; i < M; i++) {
+            if (notas[i] == copia[i]) {
+                iguais++;
+            }
+        }
 
+        printf("%d\n", iguais);
     }
 
-    if (somaMi > somaLi)
-    {
-        printf ("M");
-    }
-
-    else if (somaLi > somaMi)
-    {
-        printf ("L");
-    }
-    else
-    {
-        printf ("T");
-    }
+    return 0;
 }
