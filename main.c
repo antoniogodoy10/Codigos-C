@@ -1,20 +1,34 @@
 #include <stdio.h>
 
-int main() {
-
-    char texto[200];
-    int i, cont = 0;
-
-    printf ("Digite uma string: ");
-    fgets(texto, 200, stdin);
-
-    while (texto[i] != '\0')
+void tamanho (char str[], char inverso[])
+{
+    int i = 0;
+    while (str[i] != '\0' && str[i] != '\n')
     {
-        if (texto[i] >= 'A' && texto[i] <= 'Z')
-        {
-            cont++;
-        }
+        i++
     }
+    return i;
 
-    printf ("A quantidade de maiúsculas é de: %d", cont);
+}
+
+void inverter(char str[], char inverso[])
+{
+    int tam = tamanho(str, inverso);
+
+    for (int i = 0; i < tam; i++)
+    {
+
+    }
+}
+
+int main() {
+         
+    char str[100];
+    char inverso[100];
+
+    
+    while(fgets(str, sizeof(str), stdin) != NULL)
+    {
+        inverter(str, inverso);
+    }
 }
